@@ -18,7 +18,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 const SignupSchema = Yup.object().shape({
   name: Yup.string().required("*Required"),
   email: Yup.string().email().required("*Required"),
-  userName: Yup.string().required("*Required"),
+  username: Yup.string().required("*Required"),
   phone: Yup.string()
     .min(10, "*Required")
     .max(10, "*Required")
@@ -66,7 +66,7 @@ function RegisterForm() {
           initialValues={{
             name: "",
             email: "",
-            userName: "",
+            username: "",
             phone: "",
             password: "",
           }}
@@ -123,10 +123,10 @@ function RegisterForm() {
                       <TextField
                         label="Choose Username"
                         name="userName"
-                        value={values.userName}
+                        value={values.username}
                         {...getFieldProps("userName")}
-                        error={Boolean(touched.userName && errors.userName)}
-                        helperText={touched.userName && errors.userName}
+                        error={Boolean(touched.userName && errors.username)}
+                        helperText={touched.username && errors.username}
                         color="success"
                         fullWidth
                       />
