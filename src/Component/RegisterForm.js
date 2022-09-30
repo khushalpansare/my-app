@@ -122,9 +122,9 @@ function RegisterForm() {
                     <Grid item md={6} sm={6} xs={12}>
                       <TextField
                         label="Choose Username"
-                        name="userName"
+                        name="username"
                         value={values.username}
-                        {...getFieldProps("userName")}
+                        {...getFieldProps("username")}
                         error={Boolean(touched.username && errors.username)}
                         helperText={touched.username && errors.username}
                         color="success"
