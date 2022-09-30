@@ -125,7 +125,7 @@ function RegisterForm() {
                         name="userName"
                         value={values.username}
                         {...getFieldProps("userName")}
-                        error={Boolean(touched.userName && errors.username)}
+                        error={Boolean(touched.username && errors.username)}
                         helperText={touched.username && errors.username}
                         color="success"
                         fullWidth
