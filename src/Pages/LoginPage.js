@@ -115,7 +115,7 @@ function LoginPage2() {
               Don't have an account?{" "}
               <Link
                 component={RouterLink}
-                to={"/"}
+                to={"/my-app"}
                 underline="hover"
                 sx={{
                   fontSize: "0.9rem",
