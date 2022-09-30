@@ -50,6 +50,7 @@ function RegisterForm() {
       })
       .catch((err) => {
         alert(err);
+        setLoading(false);
       });
   };
 
