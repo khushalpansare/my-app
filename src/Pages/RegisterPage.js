@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import { Link, Card, Stack } from "@mui/material";
+import { Link, Card, Stack, Alert } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Slide1 from "./Slide1.SVG";
 import illustration_register from "./illustration_register.png";

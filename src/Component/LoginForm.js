@@ -23,7 +23,7 @@ import { useNavigate } from "react-router-dom";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 const SignupSchema = Yup.object().shape({
-  userName: Yup.string().required("*Required"),
+  username: Yup.string().required("*Required"),
   password: Yup.string()
     .min(8, "Must have at least 8 character")
     .max(12, "password to Long")
@@ -51,13 +51,14 @@ function LoginForm() {
         localStorage.setItem("name", res.data.name);
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("phone", res.data.phone);
-        // localStorage.setItem("userName", res.data.userName);
+        // localStorage.setItem("username", res.data.username);
         // console.log(res);
         setLoading(false);
         navigate("/todolist", { replace: true });
       })
       .catch((err) => {
         alert(err.response.data.msg);
+        setLoading(false);
       });
   };
 
@@ -71,13 +72,13 @@ function LoginForm() {
       >
         <Formik
           initialValues={{
-            userName: "",
+            username: "",
             password: "",
           }}
           validationSchema={SignupSchema}
           onSubmit={(values, { setSubmitting }) => {
             submitHandler(values);
-            // console.log(values);
+            console.log(values);
           }}
         >
           {(props) => {
@@ -101,12 +102,12 @@ function LoginForm() {
                   <Grid container sx={{ mt: 3 }} spacing={3}>
                     <Grid item md={12} sm={12} xs={12}>
                       <TextField
-                        label="UserName"
-                        name="userName"
-                        value={values.userName}
-                        {...getFieldProps("userName")}
-                        error={Boolean(touched.userName && errors.userName)}
-                        helperText={touched.userName && errors.userName}
+                        label="username"
+                        name="username"
+                        value={values.username}
+                        {...getFieldProps("username")}
+                        error={Boolean(touched.username && errors.username)}
+                        helperText={touched.username && errors.username}
                         color="success"
                         fullWidth
                       />

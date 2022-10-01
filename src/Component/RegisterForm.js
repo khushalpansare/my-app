@@ -3,9 +3,11 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import {
+  Alert,
   Box,
   Button,
   Container,
+  Fade,
   Grid,
   IconButton,
   InputAdornment,
@@ -14,6 +16,7 @@ import {
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoadingButton from "@mui/lab/LoadingButton";
+import { useNavigate } from "react-router-dom";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().required("*Required"),
@@ -34,6 +37,9 @@ const SignupSchema = Yup.object().shape({
 function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState(false);
+
+  let navigate = useNavigate();
 
   const handleShowPassword = () => {
     setShowPassword((show) => !show);
@@ -45,12 +51,13 @@ function RegisterForm() {
       .post(`https://koto-user-api.herokuapp.com/user/signup`, values)
       .then((res) => {
         // console.log(res);
-        // history.push("LoginForm");
         setLoading(false);
+        setAlert(true);
+        navigate("/LoginPage", { replace: true });
       })
       .catch((err) => {
-        alert(err);
         setLoading(false);
+        alert(err);
       });
   };
 
@@ -92,8 +99,11 @@ function RegisterForm() {
             };
             return (
               <Container sx={{ maxWidth: "100%" }}>
+                <Fade in={alert} unmountOnExit sx={{ mt: 4 }}>
+                  <Alert severity="success">Registration successful !</Alert>
+                </Fade>
                 <form onSubmit={handleSubmit}>
-                  <Grid container sx={{ mt: 3 }} spacing={3}>
+                  <Grid container sx={{ mt: 2 }} spacing={3}>
                     <Grid item md={12} sm={12} xs={12}>
                       <TextField
                         label="Name"

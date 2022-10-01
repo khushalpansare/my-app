@@ -100,6 +100,7 @@ function Listpage() {
         setNoteData(res.data.result);
       })
       .catch((err) => {
+        setLoading(false);
         alert(err.response.data.msg);
       });
   };
@@ -119,6 +120,7 @@ function Listpage() {
         handleClose();
       })
       .catch((err) => {
+        setLoading(false);
         alert(err.response.data.msg);
       });
     setNote({
@@ -142,6 +144,7 @@ function Listpage() {
         handleClose();
       })
       .catch((err) => {
+        setLoading(false);
         alert(err.response.data.msg);
       });
     setNote({
@@ -164,6 +167,7 @@ function Listpage() {
         handleConfermClose();
       })
       .catch((err) => {
+        setLoading(false);
         alert(err.response.data.msg);
       });
   };
