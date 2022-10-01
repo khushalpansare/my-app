@@ -3,10 +3,12 @@ import axios from "axios";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import {
+  Alert,
   Box,
   Button,
   Checkbox,
   Container,
+  Fade,
   FormControlLabel,
   Grid,
   Icon,
@@ -34,10 +36,13 @@ const SignupSchema = Yup.object().shape({
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(true);
 
   const handleShowPassword = () => {
     setShowPassword((show) => !show);
   };
+
+  setTimeout(() => setShow(false), 5000);
 
   let navigate = useNavigate();
 
@@ -95,9 +100,13 @@ function LoginForm() {
             const handleClick = (e) => {
               console.log(e);
             };
-
             return (
               <Container sx={{ maxWidth: "100%" }}>
+                <Fade in={show} unmountOnExit sx={{ mt: 4 }}>
+                  <Alert severity="success" icon={false}>
+                    Login with your userName and Password !
+                  </Alert>
+                </Fade>
                 <form onSubmit={handleSubmit}>
                   <Grid container sx={{ mt: 3 }} spacing={3}>
                     <Grid item md={12} sm={12} xs={12}>
